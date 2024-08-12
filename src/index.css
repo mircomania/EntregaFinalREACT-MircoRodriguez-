@@ -78,13 +78,6 @@ span {
 
 /* -------------------------------------- ITEM LIST CONTAINER */
 
-.bienvenido {
-    padding-left: 10px;
-    padding-top: 10px;
-    font-size: 50px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 /* -------------------------------------- MEDIA QUERY */
 
 @media (min-width: 576px) {

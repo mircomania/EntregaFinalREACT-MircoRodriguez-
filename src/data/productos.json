@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Conjunto Verano",
+        "category": "conjuntos",
+        "description": "Conjunto ligero",
+        "picture": "https://i.ibb.co/vV4Hk3z/Lenceria01.jpg",
+        "price": 25.99
+    },
+    {
+        "id": 2,
+        "name": "Conjunto Invierno",
+        "category": "conjuntos",
+        "description": "Conjunto ligero",
+        "picture": "https://i.ibb.co/26Nmp8m/Lenceria02.jpg",
+        "price": 35.99
+    },
+    {
+        "id": 3,
+        "name": "Conjunto Deportivo",
+        "category": "conjuntos",
+        "description": "Conjunto ligero",
+        "picture": "https://i.ibb.co/hB3B44r/Lenceria03.jpg",
+        "price": 29.99
+    },
+    {
+        "id": 4,
+        "name": "Gorro de Lana",
+        "category": "accesorios",
+        "description": "Accesorio lindo",
+        "picture": "https://i.ibb.co/k2V3y5w/Accesorios01.jpg",
+        "price": 12.99
+    },
+    {
+        "id": 5,
+        "name": "Bufanda de Algodón",
+        "category": "accesorios",
+        "description": "Accesorio lindo",
+        "picture": "https://i.ibb.co/KDfGKbT/Accesorios02.jpg",
+        "price": 15.99
+    },
+    {
+        "id": 6,
+        "name": "Mochila Infantil",
+        "category": "accesorios",
+        "description": "Accesorio lindo",
+        "picture": "https://i.ibb.co/rFrJpfM/Accesorios03.jpg",
+        "price": 22.99
+    }
+]

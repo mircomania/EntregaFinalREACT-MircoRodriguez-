@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +22,7 @@ export const NavBar = () => {
                     </Navbar.Brand>
                 </div>
 
-                {/* Toggle + Links */}
+                {/* Toggle + Links // menu desplegable */}
                 <div className="align-items-center toggleLinksContainer">
                     <Navbar.Toggle
                         aria-controls="basic-navbar-nav"
@@ -38,14 +39,20 @@ export const NavBar = () => {
                         }`}
                     >
                         <Nav className="ms-auto opcionesNav">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#productos">Productos</Nav.Link>
-                            <Nav.Link href="#contacto">Contacto</Nav.Link>
+                            <Nav.Link as={NavLink} to="/">
+                                Home
+                            </Nav.Link>
+                            <Nav.Link as={NavLink} to="/category/conjuntos">
+                                Conjutos
+                            </Nav.Link>
+                            <Nav.Link as={NavLink} to="/category/accesorios">
+                                Accesorios
+                            </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </div>
 
-                {/* CardWidget */}
+                {/* CardWidget // carrito de compra*/}
                 <div className="cardWidgetContainer">
                     <CardWidget />
                 </div>
