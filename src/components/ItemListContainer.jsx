@@ -3,6 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import data from '../data/productos.json';
 
 export const ItemListContainer = () => {
@@ -24,7 +26,15 @@ export const ItemListContainer = () => {
             .finally(() => setLoading(false));
     }, [id]);
 
-    if (loading) return 'wait';
+    if (loading)
+        return (
+            <Container
+                className="d-flex justify-content-center align-items-center"
+                style={{ height: '100vh' }}
+            >
+                <FontAwesomeIcon icon={faSpinner} spin size="3x" />
+            </Container>
+        );
 
     return (
         <Container className="d-flex flex-wrap justify-content-center pt-4">
