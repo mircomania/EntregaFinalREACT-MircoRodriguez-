@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { CardWidget } from './CardWidget';
+import { CartWidget } from './CartWidget';
 
 export const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,20 +24,11 @@ export const NavBar = () => {
 
                 {/* Toggle + Links // menu desplegable */}
                 <div className="align-items-center toggleLinksContainer">
-                    <Navbar.Toggle
-                        aria-controls="basic-navbar-nav"
-                        onClick={toggleMenu}
-                        className="customToggler"
-                    >
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleMenu} className="customToggler">
                         <FontAwesomeIcon icon={faBars} />
                     </Navbar.Toggle>
 
-                    <Navbar.Collapse
-                        id="basic-navbar-nav"
-                        className={`collapse navbar-collapse ${
-                            isOpen ? 'show' : ''
-                        }`}
-                    >
+                    <Navbar.Collapse id="basic-navbar-nav" className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`}>
                         <Nav className="ms-auto opcionesNav">
                             <Nav.Link as={NavLink} to="/">
                                 Home
@@ -52,9 +43,9 @@ export const NavBar = () => {
                     </Navbar.Collapse>
                 </div>
 
-                {/* CardWidget // carrito de compra*/}
+                {/* CartWidget // carrito de compra*/}
                 <div className="cardWidgetContainer">
-                    <CardWidget />
+                    <CartWidget />
                 </div>
             </Container>
         </Navbar>

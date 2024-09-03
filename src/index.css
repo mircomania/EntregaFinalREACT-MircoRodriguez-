@@ -60,6 +60,10 @@
 
 /* -------------------------------------- CARD WIDGET */
 
+.link-no-underline {
+    text-decoration: none;
+}
+
 .iconoCarro {
     font-size: 16;
     color: white;
@@ -71,7 +75,7 @@
     color: red;
 }
 
-span {
+.cart-quantity {
     color: white;
     padding-left: 5px;
 }

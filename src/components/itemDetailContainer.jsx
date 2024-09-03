@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import data from '../data/productos.json';
+import { getFirestore, getDoc, doc } from 'firebase/firestore';
+import { ItemContext } from '../contexts/itemContext';
+import { ItemCount } from './itemCount';
 
 export const ItemDetailContainer = () => {
     const [item, setItem] = useState([]);
@@ -11,33 +13,39 @@ export const ItemDetailContainer = () => {
 
     const { id } = useParams();
 
+    const { addItem } = useContext(ItemContext);
+
     useEffect(() => {
-        new Promise((resolve, reject) => setTimeout(() => resolve(data), 2000))
-            .then((res) => {
-                const finded = res.find((i) => i.id === Number(id));
-                setItem(finded);
+        const db = getFirestore();
+
+        const refDoc = doc(db, 'items', id);
+
+        getDoc(refDoc)
+            .then((snapshot) => {
+                setItem({ ...snapshot.data(), id: snapshot.id });
             })
             .finally(() => setLoading(false));
     }, [id]);
 
+    const onAdd = (count) => addItem({ ...item, quantity: count });
+
     if (loading)
         return (
-            <Container
-                className="d-flex justify-content-center align-items-center"
-                style={{ height: '100vh' }}
-            >
+            <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
                 <FontAwesomeIcon icon={faSpinner} spin size="3x" />
             </Container>
         );
 
     return (
         <Container>
-            <h1>{item.name}</h1>
-            <h2>{item.category}</h2>
+            <h1>{item.title}</h1>
+            <h2>{item.categoryId}</h2>
             <p>{item.description}</p>
-            <img src={item.picture} alt="" height={300} />
+            <img src={item.image} alt="" height={300} />
             <br />
             <b>${item.price}</b>
+            <p>{item.stock}</p>
+            <ItemCount stock={item.stock} onAdd={onAdd} />
         </Container>
     );
 };
