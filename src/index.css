@@ -29,6 +29,7 @@
 }
 
 .collapse.navbar-collapse {
+    z-index: 1000;
     position: absolute;
     top: 100%;
     left: 0;
@@ -80,7 +81,12 @@
     padding-left: 5px;
 }
 
-/* -------------------------------------- ITEM LIST CONTAINER */
+/* -------------------------------------- ITEM DETAIL */
+
+.text-danger {
+    cursor: pointer;
+    display: inline;
+}
 
 /* -------------------------------------- MEDIA QUERY */
 

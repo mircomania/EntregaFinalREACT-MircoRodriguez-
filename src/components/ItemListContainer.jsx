@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Spiner } from './utils/spiner';
 import { getFirestore, getDocs, collection, query, where } from 'firebase/firestore';
 import { ItemList } from './itemList';
+import Container from 'react-bootstrap/Container';
 
 export const ItemListContainer = () => {
     const [items, setItems] = useState([]);
@@ -28,5 +29,9 @@ export const ItemListContainer = () => {
 
     if (loading) return <Spiner />;
 
-    return <ItemList items={items} />;
+    return (
+        <Container>
+            <ItemList items={items} />
+        </Container>
+    );
 };

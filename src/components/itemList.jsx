@@ -1,11 +1,10 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
 
 export const ItemList = ({ items }) => {
     return (
-        <Container className="d-flex flex-wrap justify-content-center pt-4">
+        <div className="d-flex flex-wrap justify-content-center pt-4">
             {items.map((item) => (
                 <Card key={item.id} style={{ width: '9.6rem' }} className="m-3">
                     <Card.Img variant="top" src={item.image} />
@@ -19,6 +18,6 @@ export const ItemList = ({ items }) => {
                     </Card.Body>
                 </Card>
             ))}
-        </Container>
+        </div>
     );
 };
