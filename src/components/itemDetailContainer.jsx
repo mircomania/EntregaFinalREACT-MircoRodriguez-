@@ -1,14 +1,14 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { Spiner } from './utils/spiner';
 import { getFirestore, getDoc, doc } from 'firebase/firestore';
 import { ItemContext } from '../contexts/itemContext';
-import { ItemCount } from './itemCount';
+import { ItemDetail } from './itemDetail';
+import { ErrorPage } from './utils/paginaError';
 
 export const ItemDetailContainer = () => {
-    const [item, setItem] = useState([]);
+    const [item, setItem] = useState(null);
+
     const [loading, setLoading] = useState(true);
 
     const { id } = useParams();
@@ -22,30 +22,23 @@ export const ItemDetailContainer = () => {
 
         getDoc(refDoc)
             .then((snapshot) => {
-                setItem({ ...snapshot.data(), id: snapshot.id });
+                if (snapshot.exists()) {
+                    setItem({ ...snapshot.data(), id: snapshot.id });
+                } else {
+                    setItem(null);
+                }
+            })
+            .catch(() => {
+                setItem(null);
             })
             .finally(() => setLoading(false));
     }, [id]);
 
     const onAdd = (count) => addItem({ ...item, quantity: count });
 
-    if (loading)
-        return (
-            <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
-                <FontAwesomeIcon icon={faSpinner} spin size="3x" />
-            </Container>
-        );
+    if (loading) return <Spiner />;
 
-    return (
-        <Container>
-            <h1>{item.title}</h1>
-            <h2>{item.categoryId}</h2>
-            <p>{item.description}</p>
-            <img src={item.image} alt="" height={300} />
-            <br />
-            <b>${item.price}</b>
-            <p>{item.stock}</p>
-            <ItemCount stock={item.stock} onAdd={onAdd} />
-        </Container>
-    );
+    if (!item) return <ErrorPage />;
+
+    return <ItemDetail item={item} onAdd={onAdd} />;
 };
