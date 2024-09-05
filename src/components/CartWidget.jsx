@@ -14,6 +14,7 @@ export const CartWidget = () => {
             <a href="#home">
                 <FontAwesomeIcon icon={faCartShopping} className="iconoCarro" />
             </a>
+
             <span className="cart-quantity">{quantity}</span>
         </Link>
     );

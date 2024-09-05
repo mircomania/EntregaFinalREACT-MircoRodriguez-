@@ -2,13 +2,17 @@ export const Brief = ({ items, total, removeItem, reset, buyer, handleChange, ha
     return (
         <div className="container ps-5 pe-5 pt-4 mb-4">
             <h1 className="mb-4">Detalle de compra</h1>
+
             <div className="row">
                 {/* Columna izquierda */}
                 <div className="col-md-4">
-                    <button onClick={reset} className="btn btn-dark mb-3">
+                    <button onClick={reset} className="btn btn-dark mb-1">
                         Vaciar
                     </button>
-                    <div>Total {total}</div> <br />
+
+                    <div>Total {total}</div>
+                    <br />
+
                     <form onSubmit={handleOrderClick}>
                         <div>
                             <div className="col-md-12">
@@ -90,12 +94,14 @@ export const Brief = ({ items, total, removeItem, reset, buyer, handleChange, ha
                 {/* Columna derecha */}
                 <div className="col-md-8 ps-5">
                     {items.map((i) => (
-                        <div key={i.id} className="mb-3">
+                        <div key={i.id} className="mb-3 list-products-cart">
                             <div className="d-flex align-items-center">
                                 <p className="me-3">Cantidad: {i.quantity}</p>
+
                                 <img src={i.image} alt="" height={150} className="me-3" />
                                 <div>
                                     <h2>{i.title}</h2>
+
                                     <p className="text-danger" onClick={() => removeItem(i.id)}>
                                         Eliminar
                                     </p>

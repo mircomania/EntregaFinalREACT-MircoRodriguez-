@@ -11,6 +11,7 @@ export const ItemDetail = ({ item, onAdd }) => {
                     <Col xs={12} sm={6} className="d-flex justify-content-center">
                         <img src={item.image} alt={item.title} height={300} />
                     </Col>
+
                     <Col xs={12} sm={6} className="flex-column">
                         <h1>{item.title}</h1>
                         <h2>{item.categoryId}</h2>

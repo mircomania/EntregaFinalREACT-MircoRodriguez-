@@ -18,12 +18,21 @@ export const ItemCount = ({ stock, onAdd }) => {
 
     return (
         <>
-            <div>
-                <button onClick={handleIncrease}> + </button>
-                <span>{count}</span>
-                <button onClick={handleDecrease}> - </button>
+            <div className="d-flex align-items-center">
+                <button className="btn btn-dark px-4" onClick={handleIncrease}>
+                    +
+                </button>
+
+                <span className="mx-3">{count}</span>
+
+                <button className="btn btn-dark px-4" onClick={handleDecrease}>
+                    -
+                </button>
             </div>
-            <button onClick={handleAdd}>Comprar</button>
+
+            <button className="btn btn-dark mt-1 px-5" onClick={handleAdd}>
+                Comprar
+            </button>
         </>
     );
 };

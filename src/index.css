@@ -88,6 +88,12 @@
     display: inline;
 }
 
+/* -------------------------------------- BRIEF */
+
+.list-products-cart {
+    padding-left: 100px;
+}
+
 /* -------------------------------------- MEDIA QUERY */
 
 @media (min-width: 576px) {

@@ -17,7 +17,7 @@ export const Cart = () => {
 
     const [buyer, setBuyer] = useState(initialValues);
 
-    const total = items.reduce((acc, act) => acc + act.price * act.quantity, 0);
+    const total = parseFloat(items.reduce((acc, act) => acc + act.price * act.quantity, 0)).toFixed(2);
 
     const sendOrder = () => {
         const order = { buyer, items, total, date: new Date().toISOString(), stage: 'generada' };
